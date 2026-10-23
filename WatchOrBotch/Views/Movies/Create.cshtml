@@ -1,0 +1,67 @@
+@model WatchOrBotch.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Synopsis" class="control-label"></label>
+                <textarea asp-for="Synopsis" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Synopsis" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Runtime" class="control-label"></label>
+                <input asp-for="Runtime" class="form-control" />
+                <span asp-validation-for="Runtime" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+
+            @* <div class="mb-3">
+                <label asp-for="Releasedate" class="control-label"></label>
+                <input asp-for="Releasedate" class="form-control" />
+                <span asp-validation-for="Releasedate" class="text-danger"></span>
+            </div> *@
+
+            <div class="mb-3">
+                <label class="form-label">Image Upload</label>
+                <input type="file" id="ImageFile" name="ImageFile" class="form-control"/>
+                @*add validation next class*@
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
