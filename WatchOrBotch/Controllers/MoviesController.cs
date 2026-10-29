@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WatchOrBotch.Models;
 using WatchOrBotch.Service;
@@ -44,6 +45,12 @@ public class MoviesController : Controller
     // GET: MOVIES/Create
     public IActionResult Create()
     {
+        var genres = _context.Genre.ToList();
+        ViewBag.GenreId = new SelectList(genres, "Id", "Title");
+
+        var audiencerating = _context.AudienceRating.ToList();
+        ViewBag.AudienceRatingId = new SelectList(audiencerating, "Id", "Title");
+
         return View();
     }
 
@@ -52,7 +59,7 @@ public class MoviesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Runtime,Rating,Genre,Releasedate")] Movie movie, IFormFile imageFile)
+    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie, IFormFile imageFile)
     {
         if (ModelState.IsValid)
         {
@@ -65,6 +72,13 @@ public class MoviesController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        var genres = _context.Genre.ToList();
+        ViewBag.GenreId = new SelectList(genres, "Id", "Title");
+
+        var audiencerating = _context.AudienceRating.ToList();
+        ViewBag.AudienceRatingId = new SelectList(audiencerating, "Id", "Title");
+
         return View(movie);
     }
 
@@ -81,6 +95,12 @@ public class MoviesController : Controller
         {
             return NotFound();
         }
+        var genres = _context.Genre.ToList();
+        ViewBag.GenreId = new SelectList(genres, "Id", "Title");
+
+        var audiencerating = _context.AudienceRating.ToList();
+        ViewBag.AudienceRatingId = new SelectList(audiencerating, "Id", "Title");
+
         return View(movie);
     }
 
@@ -89,7 +109,7 @@ public class MoviesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,Title,Synopsis,Runtime,Rating,Genre,Releasedate")] Movie movie)
+    public async Task<IActionResult> Edit(int? id, [Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie)
     {
         if (id != movie.Id)
         {
@@ -118,6 +138,13 @@ public class MoviesController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
+
+        var genres = _context.Genre.ToList();
+        ViewBag.GenreId = new SelectList(genres, "Id", "Title");
+
+        var audiencerating = _context.AudienceRating.ToList();
+        ViewBag.AudienceRatingId = new SelectList(audiencerating, "Id", "Title");
+            
         return View(movie);
     }
 

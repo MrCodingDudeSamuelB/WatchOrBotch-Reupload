@@ -25,19 +25,26 @@
     <dd class = "col-sm-10">
         @Html.DisplayFor(model => model.Runtime)
     </dd>
-</dl>
-    <dt class = "col-sm-2">
+@* </dl> *@
+    @* <dt class = "col-sm-2">
         @Html.DisplayNameFor(model => model.Rating)
     </dt>
     <dd class = "col-sm-10">
         @Html.DisplayFor(model => model.Rating)
-    </dd>
+    </dd> *@
 </dl>
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.Genre)
+        @Html.DisplayNameFor(model => model.GenreId)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.Genre)
+        @Html.DisplayFor(model => model.Genre.Title)
+    </dd>
+</dl>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.AudienceRatingId)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.AudienceRating.Title)
     </dd>
 </dl>
     <dt class = "col-sm-2">
