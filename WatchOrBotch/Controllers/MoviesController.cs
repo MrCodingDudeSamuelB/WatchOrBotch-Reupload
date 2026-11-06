@@ -1,10 +1,12 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WatchOrBotch.Models;
 using WatchOrBotch.Service;
 
+[Authorize]
 public class MoviesController : Controller
 {
     private readonly WatchOrBotchContext _context;
@@ -42,6 +44,7 @@ public class MoviesController : Controller
         return View(movie);
     }
 
+    [Authorize(Roles = "Admin")]
     // GET: MOVIES/Create
     public IActionResult Create()
     {
@@ -82,6 +85,7 @@ public class MoviesController : Controller
         return View(movie);
     }
 
+    [Authorize(Roles = "Admin")]
     // GET: MOVIES/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
@@ -148,6 +152,7 @@ public class MoviesController : Controller
         return View(movie);
     }
 
+    [Authorize(Roles = "Admin")]
     // GET: MOVIES/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {

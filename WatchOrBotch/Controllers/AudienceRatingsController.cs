@@ -1,8 +1,11 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WatchOrBotch.Models;
 
+
+[Authorize(Roles = "Admin")]
 public class AudienceRatingsController : Controller
 {
     private readonly WatchOrBotchContext _context;
