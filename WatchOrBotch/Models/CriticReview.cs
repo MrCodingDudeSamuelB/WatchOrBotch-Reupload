@@ -9,7 +9,7 @@ namespace WatchOrBotch.Models
         public int Id { get; set; }
 
         // foreign key
-        [Display(Name = "Critic")]
+        [Display(Name = "Movie")]
         public int MovieId { get; set; }
 
         // navigation property
@@ -20,6 +20,7 @@ namespace WatchOrBotch.Models
 
 
         [Required]
+        [MaxLength(1000)]
         public string Description { get; set; } = string.Empty;
 
         [Required]

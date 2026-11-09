@@ -31,6 +31,7 @@ public class AudienceRatingsController : Controller
 
         var audiencerating = await _context.AudienceRating
             .FirstOrDefaultAsync(m => m.Id == id);
+
         if (audiencerating == null)
         {
             return NotFound();

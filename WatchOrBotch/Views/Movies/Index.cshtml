@@ -5,10 +5,13 @@
 }
 
 <h1>Index</h1>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary btn-sm"> Create </a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -60,17 +63,34 @@
             <td>
                 @Html.DisplayFor(model => item.Releasedate)
             </td>
-            <td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                }
-                else
-                {
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                }
+               <td>
+                    <a asp-controller="CriticReviews"
+                       asp-action="Create"
+                       asp-route-movieId="@item.Id"
+                       class="btn btn-primary btn-sm me-1">
+                        Write Critic Review
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="btn btn-primary btn-sm me-1">
+                        Details
+                    </a>
+
+                    @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-primary btn-sm me-1">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-primary btn-sm me-1">
+                                Delete
+                            </a>
+                        }
             </td>
         </tr>
 }
