@@ -62,7 +62,7 @@ public class MoviesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie, IFormFile imageFile)
+    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie, IFormFile? imageFile)
     {
         if (ModelState.IsValid)
         {
@@ -113,7 +113,7 @@ public class MoviesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie)
+    public async Task<IActionResult> Edit(int? id, [Bind("Id,Title,Synopsis,Runtime,AudienceRatingId,GenreId,Releasedate")] Movie movie, IFormFile? imageFile)
     {
         if (id != movie.Id)
         {

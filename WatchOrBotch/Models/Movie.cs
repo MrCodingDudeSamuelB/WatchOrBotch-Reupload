@@ -23,7 +23,7 @@ namespace WatchOrBotch.Models
         //public string Genre { get; set; } = string.Empty;
         
         [Display(Name = "Release Date")]
-        public string Releasedate { get; set; } = string.Empty;
+        public DateOnly Releasedate { get; set; }
 
         public string ImageUrl { get; set; } = string.Empty;
     }
